@@ -10,12 +10,14 @@ function App() {
     <BrowserRouter>
       <GlobalStyle />
       <Header />
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Sidebar>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Sidebar>
     </BrowserRouter>
   );
 }

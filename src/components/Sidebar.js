@@ -4,7 +4,11 @@ import styled from "styled-components";
 export default function Sidebar({ children }) {
   return (
     <PageContainer>
-      <SidebarContainer>Sidebar</SidebarContainer>
+      <SidebarContainer>
+        Sidebar
+        <button>dashboard</button>
+        <button>home</button>
+      </SidebarContainer>
       {children}
     </PageContainer>
   );
@@ -15,6 +19,8 @@ const PageContainer = styled.div`
 `;
 
 const SidebarContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 15rem;
   min-height: calc(100vh - 3rem);
   background-color: #fff;

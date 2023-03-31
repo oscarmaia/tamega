@@ -1,30 +1,88 @@
 import styled from "styled-components";
-import Button from "@mui/material/Button";
 import Order from "./order/Order";
 
 export default function Dashboard() {
+  const orders = [
+    {
+      id: 1,
+      tableId: 1,
+      totalValue: 320,
+      createdAt: "30/03/2023",
+      status: "PENDING",
+      itens: [{ name: "Coxinha de Frango" }],
+    },
+    {
+      id: 2,
+      tableId: 2,
+      totalValue: 320,
+      createdAt: "30/03/2023",
+      status: "PENDING",
+      itens: [
+        {
+          name: "Coxinha de Frango",
+        },
+        {
+          name: "Mini",
+        },
+        { name: "Caipirinha Brasileira" },
+        {
+          name: "Coxinha de Frango",
+        },
+        {
+          name: "Mini",
+        },
+        { name: "Caipirinha Brasileira" },
+      ],
+    },
+
+    {
+      id: 3,
+      tableId: 3,
+      totalValue: 320,
+      createdAt: "30/03/2023",
+      itens: [{ name: "Coxinha de Frango" }],
+      status: "PENDING",
+    },
+    {
+      id: 4,
+      tableId: 4,
+      totalValue: 320,
+      createdAt: "30/03/2023",
+      itens: [{ name: "Coxinha de Frango" }],
+      status: "PENDING",
+    },
+    {
+      id: 5,
+      tableId: 5,
+      totalValue: 320,
+      createdAt: "30/03/2023",
+      itens: [{ name: "Coxinha de Frango" }],
+      status: "PENDING",
+    },
+    {
+      id: 6,
+      tableId: 6,
+      totalValue: 320,
+      createdAt: "30/03/2023",
+      itens: [{ name: "Coxinha de Frango" }],
+      status: "PENDING",
+    },
+  ];
   return (
     <AreaContainer>
       <DashboardContainer>
         <OrderContainer>
-          <Order />
-          <Order />
-          <Order />
-          <Order />
-          <Order />
-          <Order />
-          <Order />
-          <Order />
-          <Order />
-          <Order />
-          <Order />
-          <Order />
-          <Order />
-          <Order />
-          <Order />
-          <Order />
-          <Order />
-          <Order />
+          {orders.map((o) => {
+            return (
+              <Order
+                id={o.id}
+                totalValue={o.totalValue}
+                key={o.id}
+                status={o.status}
+                itens={o.itens}
+              />
+            );
+          })}
         </OrderContainer>
       </DashboardContainer>
     </AreaContainer>

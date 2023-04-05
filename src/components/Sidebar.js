@@ -1,15 +1,13 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-export default function Sidebar({ children }) {
+export default function Sidebar() {
   return (
     <PageContainer>
       <SidebarContainer>
-        Sidebar
-        <button>dashboard</button>
-        <button>home</button>
+        <NavLink to={"/dashboard"}>dashboard</NavLink>
+        <NavLink to={"/home"}>home</NavLink>
       </SidebarContainer>
-      {children}
     </PageContainer>
   );
 }
@@ -25,4 +23,7 @@ const SidebarContainer = styled.div`
   min-height: calc(100vh - 3rem);
   background-color: #fff;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+  a:active {
+    color: green;
+  }
 `;

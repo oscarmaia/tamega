@@ -1,15 +1,70 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 export default function SignUp() {
+  const [disableButton, setDisableButton] = useState(false);
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+    _password: "",
+  });
+
+  function register(e) {
+    e.preventDefault();
+    setDisableButton(true);
+    if (form.password !== form._password) {
+      alert("password must be the same");
+      setDisableButton(false);
+      return;
+    }
+    console.log(form);
+  }
+
+  function handleChange(e) {
+    setForm({ ...form, [e.target.name]: e.target.value });
+    console.log(form);
+  }
+
   return (
     <AreaContainer>
       <h1>CADASTRE-SE</h1>
-      <Form onSubmit={() => console.log("clicked")}>
-        <Input placeholder="name"></Input>
-        <Input placeholder="username"></Input>
-        <Input placeholder="password"></Input>
-        <Input placeholder="confirm password"></Input>
-        <Button>FAZER CADASTRO</Button>
+      <Form onSubmit={register}>
+        <Input
+          name="name"
+          value={form.name}
+          required
+          type="text"
+          placeholder="name"
+          onChange={handleChange}
+        ></Input>
+        <Input
+          value={form.email}
+          name="email"
+          type="email"
+          required
+          placeholder="email"
+          onChange={handleChange}
+        ></Input>
+        <Input
+          value={form.password}
+          onChange={handleChange}
+          name="password"
+          type="password"
+          required
+          placeholder="password"
+        ></Input>
+        <Input
+          value={form._password}
+          onChange={handleChange}
+          name="_password"
+          type="password"
+          required
+          placeholder="confirm password"
+        ></Input>
+        <Button disabled={disableButton ? true : false} type="submit">
+          FAZER CADASTRO
+        </Button>
       </Form>
     </AreaContainer>
   );

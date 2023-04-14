@@ -14,12 +14,18 @@ export default function UserLayout() {
 }
 
 const LeftContainer = styled.div`
+  @media (max-width: 768px) {
+    display: none;
+  }
   display: flex;
   flex-direction: column;
   width: 55%;
   background-color: lightblue;
 `;
 const RightContainer = styled.div`
+  @media (max-width: 768px) {
+    width: 100%;
+  }
   display: flex;
   flex-direction: column;
   width: 45%;

@@ -1,14 +1,14 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Dashboard from "./components/Dashboard";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Dashboard from './components/Dashboard';
 
-import Home from "./pages/Home";
-import NotFound from "./pages/NotFound";
-import GlobalStyle from "./resources/css/reset";
-import SignIn from "./pages/SingIn";
-import SignUp from "./pages/SignUp";
-import UserLayout from "./layouts/UserLayout";
-import AdminLayout from "./layouts/AdminLayout";
-import LandPageLayout from "./layouts/LandPageLayout";
+import Home from './pages/Home';
+import NotFound from './pages/NotFound';
+import GlobalStyle from './resources/css/reset';
+import SignIn from './pages/SingIn';
+import SignUp from './pages/SignUp';
+import UserLayout from './layouts/UserLayout';
+import AdminLayout from './layouts/AdminLayout';
+import LandPageLayout from './layouts/LandPageLayout';
 
 function App() {
   return (

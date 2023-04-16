@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 export default function Home() {
   return (
     <CenteredContainer>
@@ -21,7 +21,7 @@ const CenteredContainer = styled.div`
   a {
     text-decoration: none;
   }
-  a:visited{
+  a:visited {
     color: inherit;
   }
 `;

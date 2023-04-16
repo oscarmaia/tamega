@@ -1,43 +1,56 @@
-import { useState } from "react";
-import styled from "styled-components";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
 export default function SignUp() {
+  const navigate = useNavigate();
   const [disableButton, setDisableButton] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
   const [form, setForm] = useState({
-    name: "",
-    email: "",
-    password: "",
-    _password: "",
+    name: '',
+    email: '',
+    password: '',
+    _password: '',
   });
 
   function register(e) {
     e.preventDefault();
     setDisableButton(true);
     if (form.password !== form._password) {
-      alert("password must be the same");
+      setErrorMessage('Password must be the same');
       setDisableButton(false);
       return;
     }
-    console.log(form);
+    const token = '39024809238402934';
+    axios
+      .post(`${process.env.REACT_APP_BASE_URL}/users`, form, {
+        headers: {
+          Authorization: `bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        navigate('/sign-in');
+      })
+      .catch((err) => {
+        setDisableButton(false);
+        setErrorMessage(err.response.data.message);
+      });
   }
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
-    console.log(form);
   }
+
+  useEffect(() => {
+    setDisableButton(false);
+  }, []);
 
   return (
     <AreaContainer>
       <h1>CADASTRE-SE</h1>
       <Form onSubmit={register}>
-        <Input
-          name="name"
-          value={form.name}
-          required
-          type="text"
-          placeholder="name"
-          onChange={handleChange}
-        ></Input>
+        <Input name="name" value={form.name} required type="text" placeholder="name" onChange={handleChange}></Input>
         <Input
           value={form.email}
           name="email"
@@ -49,6 +62,7 @@ export default function SignUp() {
         <Input
           value={form.password}
           onChange={handleChange}
+          minLength={6}
           name="password"
           type="password"
           required
@@ -57,14 +71,17 @@ export default function SignUp() {
         <Input
           value={form._password}
           onChange={handleChange}
+          minLength={6}
           name="_password"
           type="password"
           required
           placeholder="confirm password"
         ></Input>
+        <span style={{ color: 'red' }}>{errorMessage ? errorMessage : ''}</span>
         <Button disabled={disableButton ? true : false} type="submit">
           FAZER CADASTRO
         </Button>
+        <Link to={'/sign-in'}>Ir para página de login</Link>
       </Form>
     </AreaContainer>
   );
@@ -93,6 +110,17 @@ const Form = styled.form`
   align-items: center;
   border-radius: 0.5rem;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
+  a {
+    margin: 0.2rem;
+    text-decoration: none;
+  }
+  a:hover {
+    cursor: pointer;
+    text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+  }
+  a:visited {
+    color: inherit;
+  }
 `;
 
 const Input = styled.input`

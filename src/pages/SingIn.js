@@ -1,23 +1,40 @@
-import { useState } from "react";
-import styled from "styled-components";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
 export default function SignIn() {
+  const navigate = useNavigate();
   const [disableButton, setDisableButton] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
   const [form, setForm] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
 
   function register(e) {
     e.preventDefault();
     setDisableButton(true);
-    console.log(form);
+    axios
+      .post(`${process.env.REACT_APP_BASE_URL}/auth`, form, {})
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem('token', res.data.token);
+        navigate('/dashboard');
+      })
+      .catch((err) => {
+        setDisableButton(false);
+        setErrorMessage(err.response.data.message);
+      });
   }
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
-    console.log(form);
   }
+
+  useEffect(() => {
+    setDisableButton(false);
+  }, []);
 
   return (
     <AreaContainer>
@@ -39,9 +56,11 @@ export default function SignIn() {
           required
           placeholder="password"
         ></Input>
+        <span style={{ color: 'red' }}>{errorMessage ? errorMessage : ''}</span>
         <Button disabled={disableButton ? true : false} type="submit">
           FAZER LOGIN
         </Button>
+        <Link to={'/sign-up'}>Ir para página de cadastro</Link>
       </Form>
     </AreaContainer>
   );
@@ -70,6 +89,17 @@ const Form = styled.form`
   align-items: center;
   border-radius: 0.5rem;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
+  a {
+    margin: 0.2rem;
+    text-decoration: none;
+  }
+  a:hover {
+    cursor: pointer;
+    text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+  }
+  a:visited {
+    color: inherit;
+  }
 `;
 
 const Input = styled.input`

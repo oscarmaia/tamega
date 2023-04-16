@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export default function Order({ id, totalValue, status, itens }) {
   console.log(itens);
@@ -7,10 +7,14 @@ export default function Order({ id, totalValue, status, itens }) {
       <TotalArea>
         <h1>Pedido: {id}</h1>
         <h1>
-          Itens:{" "}
-          <br></br>
+          Itens: <br></br>
           {itens.map((i) => {
-            return <span>{i.name}<br></br></span>;
+            return (
+              <span>
+                {i.name}
+                <br></br>
+              </span>
+            );
           })}
         </h1>
         <h2>Valor total: {totalValue}</h2>

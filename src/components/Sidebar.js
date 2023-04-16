@@ -1,12 +1,12 @@
-import { NavLink } from "react-router-dom";
-import styled from "styled-components";
+import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
 
 export default function Sidebar() {
   return (
     <PageContainer>
       <SidebarContainer>
-        <NavLink to={"/dashboard"}>dashboard</NavLink>
-        <NavLink to={"/home"}>home</NavLink>
+        <NavLink to={'/dashboard'}>dashboard</NavLink>
+        <NavLink to={'/'}>home</NavLink>
       </SidebarContainer>
     </PageContainer>
   );

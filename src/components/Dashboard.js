@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Order from "./order/Order";
+import styled from 'styled-components';
+import Order from './order/Order';
 
 export default function Dashboard() {
   const orders = [
@@ -7,31 +7,31 @@ export default function Dashboard() {
       id: 1,
       tableId: 1,
       totalValue: 320,
-      createdAt: "30/03/2023",
-      status: "PENDING",
-      itens: [{ name: "Coxinha de Frango" }],
+      createdAt: '30/03/2023',
+      status: 'PENDING',
+      itens: [{ name: 'Coxinha de Frango' }],
     },
     {
       id: 2,
       tableId: 2,
       totalValue: 320,
-      createdAt: "30/03/2023",
-      status: "PENDING",
+      createdAt: '30/03/2023',
+      status: 'PENDING',
       itens: [
         {
-          name: "Coxinha de Frango",
+          name: 'Coxinha de Frango',
         },
         {
-          name: "Mini",
+          name: 'Mini',
         },
-        { name: "Caipirinha Brasileira" },
+        { name: 'Caipirinha Brasileira' },
         {
-          name: "Coxinha de Frango",
+          name: 'Coxinha de Frango',
         },
         {
-          name: "Mini",
+          name: 'Mini',
         },
-        { name: "Caipirinha Brasileira" },
+        { name: 'Caipirinha Brasileira' },
       ],
     },
 
@@ -39,33 +39,33 @@ export default function Dashboard() {
       id: 3,
       tableId: 3,
       totalValue: 320,
-      createdAt: "30/03/2023",
-      itens: [{ name: "Coxinha de Frango" }],
-      status: "PENDING",
+      createdAt: '30/03/2023',
+      itens: [{ name: 'Coxinha de Frango' }],
+      status: 'PENDING',
     },
     {
       id: 4,
       tableId: 4,
       totalValue: 320,
-      createdAt: "30/03/2023",
-      itens: [{ name: "Coxinha de Frango" }],
-      status: "PENDING",
+      createdAt: '30/03/2023',
+      itens: [{ name: 'Coxinha de Frango' }],
+      status: 'PENDING',
     },
     {
       id: 5,
       tableId: 5,
       totalValue: 320,
-      createdAt: "30/03/2023",
-      itens: [{ name: "Coxinha de Frango" }],
-      status: "PENDING",
+      createdAt: '30/03/2023',
+      itens: [{ name: 'Coxinha de Frango' }],
+      status: 'PENDING',
     },
     {
       id: 6,
       tableId: 6,
       totalValue: 320,
-      createdAt: "30/03/2023",
-      itens: [{ name: "Coxinha de Frango" }],
-      status: "PENDING",
+      createdAt: '30/03/2023',
+      itens: [{ name: 'Coxinha de Frango' }],
+      status: 'PENDING',
     },
   ];
   return (
@@ -73,15 +73,7 @@ export default function Dashboard() {
       <DashboardContainer>
         <OrderContainer>
           {orders.map((o) => {
-            return (
-              <Order
-                id={o.id}
-                totalValue={o.totalValue}
-                key={o.id}
-                status={o.status}
-                itens={o.itens}
-              />
-            );
+            return <Order id={o.id} totalValue={o.totalValue} key={o.id} status={o.status} itens={o.itens} />;
           })}
         </OrderContainer>
       </DashboardContainer>

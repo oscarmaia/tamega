@@ -1,11 +1,11 @@
-import { Button } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
-import styled from "styled-components";
-import Sidebar from "./Sidebar";
+import { Button } from '@mui/material';
+import { useEffect, useRef, useState } from 'react';
+import styled from 'styled-components';
+import Sidebar from './Sidebar';
 
 export default function Header() {
   function handleSidebarToggle() {
-    console.log("toggle");
+    console.log('toggle');
   }
   return <HeaderContainer>HEADER</HeaderContainer>;
 }
